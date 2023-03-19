@@ -235,7 +235,7 @@ class Text2Image:
                          "The input to this tool should be a string, representing the text used to generate image. ")
     def inference(self, text):
         image_filename = os.path.join('image', f"{str(uuid.uuid4())[:8]}.png")
-        prompt = text + ', ' + self.a_prompt
+        prompt = f'{text}, {self.a_prompt}'
         image = self.pipe(prompt, negative_prompt=self.n_prompt).images[0]
         image.save(image_filename)
         print(
